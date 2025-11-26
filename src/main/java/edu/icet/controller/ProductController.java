@@ -18,4 +18,9 @@ public class ProductController {
         productService.save(product);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable String id){
+        productService.delete(id);
+    }
+
 }
