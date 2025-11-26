@@ -29,4 +29,9 @@ public class ProductController {
         productService.update(productDTO);
     }
 
+    @GetMapping("{id}")
+    public ProductDTO getProductById(@PathVariable String id){
+        return productService.getProductById(id);
+    }
+
 }

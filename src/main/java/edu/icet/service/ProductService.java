@@ -44,4 +44,16 @@ public class ProductService {
         productRepository.save(product);
 
     }
+
+    public ProductDTO getProductById(String id) {
+        Product product = productRepository.getById(id);
+
+        return new ProductDTO(
+                product.getProductCode(),
+                product.getName(),
+                product.getCategory(),
+                product.getPrice(),
+                product.getQtyOnHand()
+        );
+    }
 }
