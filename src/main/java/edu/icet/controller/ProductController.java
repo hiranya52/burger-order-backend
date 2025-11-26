@@ -1,6 +1,7 @@
 package edu.icet.controller;
 
 
+import edu.icet.model.dto.CustomerDTO;
 import edu.icet.model.dto.ProductDTO;
 import edu.icet.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ public class ProductController {
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable String id){
         productService.delete(id);
+    }
+
+    @PutMapping("/update")
+    public void updateProduct(@RequestBody ProductDTO productDTO) {
+        productService.update(productDTO);
     }
 
 }
