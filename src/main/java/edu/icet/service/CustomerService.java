@@ -52,4 +52,20 @@ public class CustomerService {
         customerRepository.save(updatedCustomer);
 
     }
+
+    public CustomerDTO getCustomerById(String id) {
+        Customer byId = customerRepository.getById(id);
+
+        return new CustomerDTO(
+                byId.getCustId(),
+                byId.getCity(),
+                byId.getCustAddress(),
+                byId.getCustTitle(),
+                byId.getCustName(),
+                byId.getDob(),
+                byId.getPostalCode(),
+                byId.getProvince(),
+                byId.getSalary()
+        );
+    }
 }

@@ -32,5 +32,10 @@ public class CustomerController {
         customerService.update(customerDTO);
     }
 
+    @GetMapping("/{id}")
+    public CustomerDTO getCustomerById(@PathVariable String id) {
+        return customerService.getCustomerById(id);
+
+    }
 
 }
