@@ -4,8 +4,12 @@ package edu.icet.service;
 import edu.icet.model.dto.CustomerDTO;
 import edu.icet.model.entity.Customer;
 import edu.icet.repository.CustomerRepository;
+import org.apache.catalina.filters.RemoteIpFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CustomerService {
@@ -67,5 +71,28 @@ public class CustomerService {
                 byId.getProvince(),
                 byId.getSalary()
         );
+    }
+
+    public List<CustomerDTO> findAll() {
+        List<Customer> customerList = customerRepository.findAll();
+
+        List<CustomerDTO> customerDTOS = new ArrayList<>();
+
+        for(Customer customer : customerList){
+            customerDTOS.add(new CustomerDTO(
+                    customer.getCustId(),
+                    customer.getCity(),
+                    customer.getCustAddress(),
+                    customer.getCustTitle(),
+                    customer.getCustName(),
+                    customer.getDob(),
+                    customer.getPostalCode(),
+                    customer.getProvince(),
+                    customer.getSalary()
+            ));
+        }
+
+        return customerDTOS;
+
     }
 }

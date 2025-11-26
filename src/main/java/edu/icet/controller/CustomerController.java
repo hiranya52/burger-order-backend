@@ -5,6 +5,8 @@ import edu.icet.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -37,5 +39,11 @@ public class CustomerController {
         return customerService.getCustomerById(id);
 
     }
+
+    @GetMapping("/getAll")
+    public List<CustomerDTO> getAllCustomer(){
+        return customerService.findAll();
+    }
+
 
 }
