@@ -13,13 +13,19 @@ public class CustomerController {
     CustomerService customerService;
 
     @GetMapping
-    public String loaded() {
-        return "Customer Controller Loaded!!";
+    public String loadCustomer(){
+        return "load Customer Controller..";
     }
 
     @PostMapping("/save")
     public void save(@RequestBody CustomerDTO customer){
         customerService.save(customer);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable String id){
+        customerService.delete(id);
+    }
+
 
 }

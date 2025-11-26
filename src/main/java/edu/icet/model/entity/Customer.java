@@ -1,9 +1,9 @@
 package edu.icet.model.entity;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
+
 
 @Getter
 @Setter
@@ -14,14 +14,15 @@ import lombok.*;
 public class Customer {
 
     @Id
+    private String custId;
+    private String city;
+    private String custAddress;
     private String custTitle;
-    private String custID;
     private String custName;
     private String dob;
-    private double salary;
-    private String custAddress;
-    private String city;
-    private String province;
     private String postalCode;
+    private String province;
+    private double salary;
+
 
 }
