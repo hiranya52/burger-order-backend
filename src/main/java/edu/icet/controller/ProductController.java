@@ -7,6 +7,8 @@ import edu.icet.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -32,6 +34,11 @@ public class ProductController {
     @GetMapping("{id}")
     public ProductDTO getProductById(@PathVariable String id){
         return productService.getProductById(id);
+    }
+
+    @GetMapping("/getAll")
+    public List<ProductDTO> getAllProducts(){
+        return productService.findAll();
     }
 
 }

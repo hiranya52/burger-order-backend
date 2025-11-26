@@ -7,6 +7,9 @@ import edu.icet.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ProductService {
 
@@ -55,5 +58,29 @@ public class ProductService {
                 product.getPrice(),
                 product.getQtyOnHand()
         );
+    }
+
+    public List<ProductDTO> findAll() {
+
+        List<Product> products = productRepository.findAll();
+
+        List<ProductDTO> productDTOS = new ArrayList<>();
+
+        for (Product product : products){
+
+            productDTOS.add(
+                    new ProductDTO(
+                            product.getProductCode(),
+                            product.getName(),
+                            product.getCategory(),
+                            product.getPrice(),
+                            product.getQtyOnHand()
+                    )
+            );
+
+        }
+
+        return productDTOS;
+
     }
 }
