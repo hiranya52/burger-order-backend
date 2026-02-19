@@ -1,0 +1,49 @@
+package edu.icet.controller;
+
+import edu.icet.model.dto.CustomerDTO;
+import edu.icet.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/customer")
+public class CustomerController {
+
+    @Autowired
+    CustomerService customerService;
+
+    @GetMapping
+    public String loadCustomer(){
+        return "load Customer Controller..";
+    }
+
+    @PostMapping("/save")
+    public void save(@RequestBody CustomerDTO customer){
+        customerService.save(customer);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable String id){
+        customerService.delete(id);
+    }
+
+    @PutMapping("/update")
+    public void updateCustomer(@RequestBody CustomerDTO customerDTO) {
+        customerService.update(customerDTO);
+    }
+
+    @GetMapping("/{id}")
+    public CustomerDTO getCustomerById(@PathVariable String id) {
+        return customerService.getCustomerById(id);
+
+    }
+
+    @GetMapping("/getAll")
+    public List<CustomerDTO> getAllCustomer(){
+        return customerService.findAll();
+    }
+
+
+}
